@@ -26,10 +26,6 @@
 #include <cstring>
 class Board{
 	public:
-	void perform(Move&);
-	void perform(JumpMove&);
-	void back(Move&);
-	void back(JumpMove&);
 	int length(){
 		return _length;
 	}
@@ -42,6 +38,13 @@ class Board{
 	Figure operator[](int index){
 		return get(index);
 	}
+	void init(){
+		for(int i = 0;i<12;i++){
+			set(i,Figures::HChecker);
+			set(31-i ,Figures::CChecker);
+		}
+		
+	}
 	void free(int index){
 		set(index,Figures::free());
 	}
@@ -49,7 +52,6 @@ class Board{
 		squares[index] = figure;
 	}
 	private:	
-	void migrate(int from ,int to);
 	size_t static const _length = 32; 
 	Figure squares[32];
 };
