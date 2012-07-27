@@ -33,7 +33,7 @@ class Board{
 		return get(index) == Figures::free();
 	}
 	Figure get(int index){
-		return squares[index];
+		return figures[index];
 	}
 	Figure operator[](int index){
 		return get(index);
@@ -49,10 +49,10 @@ class Board{
 		set(index,Figures::free());
 	}
 	void set(int index , Figure figure){
-		squares[index] = figure;
+		figures[index] = figure;
 	}
 	private:	
 	size_t static const _length = 32; 
-	Figure squares[32];
+	Figure figures[32];
 };
 #endif
