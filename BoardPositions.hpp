@@ -15,7 +15,7 @@ class BoardPositions{
 	typedef CH_SEQ& R_CH_SEQ;
 	typedef SEQ_LEN* P_SEQ_LEN;
 	typedef SEQ_LEN& R_SEQ_LEN;
-	static void getChekerNextPositions(Player  , int  , P_MOV&  , int*);
+	static void getCheckerNextPositions(Player  , int  , P_MOV&  , int*);
 	static void getDiagonalSequences(int  , P_SEQ& , P_SEQ_LEN&  ,int (*) [2] , int*  );
 	static void getJumpSequencesForChecker(int  , P_CH_SEQ&  , int* );
 	static bool isInKingSequence(int  , Player );

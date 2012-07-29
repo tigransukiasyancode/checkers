@@ -1,34 +1,48 @@
 #ifndef FIGURES_HPP
 #define FIGURES_HPP
-#include "Player.hpp"
+#include "Players.hpp"
 typedef int Figure;
 class Figures{
 	public:
-	const static Figure HChecker = -1;
-	const static Figure CChecker = 1;
-	const static Figure HKing = -2;
-	const static Figure CKing = 2;
+	const static Figure FirstChecker = -1;
+	const static Figure SecondChecker = 1;
+	const static Figure FirstKing = -2;
+	const static Figure SecondKing = 2;
 	const static Figure None = 0;
 	static Figure free(){
 		return None;
 	}
 	static bool isChecker(Figure figure){
-		if(figure == HChecker || figure == CChecker){
+		if(figure == FirstChecker || figure == SecondChecker){
 			return true;
 		}
 		return false;
 	}
 	static Figure kingOf(Player p){
-		if(p == Computer){
-			return CKing;
+		if(p == FirstPlayer){
+			return FirstKing;
 		}
-		return HKing;
+		return SecondKing;
 	}
 	static Player playerOf(Figure f){
 		if(f > 0){
-			return Computer;
+			return SecondPlayer;
 		}
-		return Human;
+		return FirstPlayer;
 	}
+	static Figures of(Player player){
+		if(player == FirstPlayer){
+			return Figures(FirstChecker , FirstKing);
+		}
+		return Figures(SecondChecker , SecondKing);
+	}
+	static bool isOponents(Figure f1 , Figure f2){
+		return (f1*f2 < 0);
+		
+	}	
+	public:
+	Figure checker;
+	Figure king;
+	Figures(Figure c ,Figure k):checker(c),king(k){}
 };
 #endif

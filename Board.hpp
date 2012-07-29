@@ -51,8 +51,11 @@ class Board{
 	void set(int index , Figure figure){
 		figures[index] = figure;
 	}
+	void perform(Move&);
+	void back();
 	private:	
 	size_t static const _length = 32; 
 	Figure figures[32];
+	History history;
 };
 #endif

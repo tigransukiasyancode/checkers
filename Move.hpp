@@ -6,15 +6,22 @@
 using namespace std;
 class Move{
 	public:
-	Move(int from,int to):_from(from) , _to(to){
-	}	
+	Move(int from , int to):_from(from) , _to(to){
+	}
+	template<typename iterator>	
+	Move(int from , int to , iterator begin , iterator end):_from(from) , _to(to) ,  capturing_positions{
+	}
 	int from()const{return _from;}
 	int to()const{return _to;}
+	capturing_positions_iterator beginCapturinPositions();
+	capturing_positions_iterator endCapturinPositions();
+	
 	private:
+	list<int> _capturing_positions;
 	int _from;
 	int _to;
 };
-class JumpMove{
+/*class JumpMove{
 	public:	
 	JumpMove(int from,int to, int over ,const JumpMove& next):_from(from)
 								,_to(to)
@@ -61,7 +68,7 @@ class JumpMove{
 	int _to;
 	int _over;
 	JumpMove* _next;
-};
+};*/
 class MoveHistory{
 	public:
 	struct Prey{

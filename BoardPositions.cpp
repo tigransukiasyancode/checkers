@@ -1,5 +1,7 @@
+#include <iostream>
+using namespace std;
 #include "BoardPositions.hpp"
-void BoardPositions::getChekerNextPositions(Player player , int ind , P_MOV& arr , int* length){
+void BoardPositions::getCheckerNextPositions(Player player , int ind , P_MOV& arr , int* length){
 	static MOV moves [2][32]= {
 		//computer
 		{
@@ -24,7 +26,7 @@ void BoardPositions::getChekerNextPositions(Player player , int ind , P_MOV& arr
 			, /*28*/{}	, /*29*/{}	, /*30*/{}	, /*31*/{}
 		}
 	};
-	static int lengths[32] ={0,0,0,0,2,2,2,1,1,2,2,2,2,2,2,1,1,2,2,2,2,2,1,1,2,2,2,2,2,2,1};
+	static int lengths[32] ={0,0,0,0,2,2,2,1,1,2,2,2,2,2,2,1,1,2,2,2,2,2,2,1,1,2,2,2,2,2,2,1};
 	int player_index = getIndex(player);
 	arr =& moves[player_index][ind];
 	*length =( ( player_index == 1) ? lengths[31-ind]:lengths[ind]); 		
@@ -44,7 +46,7 @@ void BoardPositions::getDiagonalSequences(int ind , P_SEQ& move_sequences ,P_SEQ
 	/*10*/	,{3,6,10,13,17,20,24}
 	/*11*/	,{2,5,9,12,16}
 	/*12*/	,{1,4,8}};
-	static SEQ_LEN sequence_lengths = {2,4,6,8,6,4,2,3,5,7,5,3};
+	static SEQ_LEN sequence_lengths = {2,4,6,8,6,4,2,3,5,7,7,5,3};
 	/*	
 		squere_indexes = {
 			indexes=>{

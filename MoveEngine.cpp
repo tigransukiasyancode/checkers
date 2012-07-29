@@ -1,4 +1,4 @@
-#include "MoveEngine.hpp"
+#include "MoveEngne.hpp"
 MoveEngine::MoveEngine(const Board& initial_board):board(initial_board){
 }
 void MoveEngine::perform(const Move& m){
@@ -22,6 +22,12 @@ void MoveEngine::back(){
 }
 void MoveEngine::perform(const JumpMove& jump){
 	int from = jump.from();
+	JumpMove::position_iterator it = jump.begin();
+	for(;it != jump.end();++it){
+		int over = it->over();
+		to = it->to();
+	}
+	
 	Figure figure = board.get(from);
 	int to ;
 	MoveHistory h;
