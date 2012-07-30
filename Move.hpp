@@ -6,15 +6,21 @@
 using namespace std;
 class Move{
 	public:
+	typedef list<int>::const_iterator capturing_iterator;
+	Move(){}
 	Move(int from , int to):_from(from) , _to(to){
 	}
 	template<typename iterator>	
-	Move(int from , int to , iterator begin , iterator end):_from(from) , _to(to) ,  capturing_positions{
+	Move(int from , int to , iterator begin , iterator end):_from(from) , _to(to) ,  _capturing_positions(begin,end          ){
 	}
 	int from()const{return _from;}
 	int to()const{return _to;}
-	capturing_positions_iterator beginCapturinPositions();
-	capturing_positions_iterator endCapturinPositions();
+	capturing_iterator beginCapturing ()const{
+		return _capturing_positions.begin();
+	}
+	capturing_iterator endCapturing ()const{
+		return _capturing_positions.end();
+	}
 	
 	private:
 	list<int> _capturing_positions;
@@ -71,15 +77,15 @@ class Move{
 };*/
 class MoveHistory{
 	public:
-	struct Prey{
-		Prey(int p , Figure f):position(p),prey(f){
+	struct Captured{
+		Captured(int p , Figure f):position(p),figure(f){
 		}
-		Prey(){}
+		Captured(){}
 		int position;
-		Figure prey;
+		Figure figure;
 	};
 	
-	typedef list<Prey>::const_iterator prey_iterator;
+	typedef list<Captured>::const_iterator captured_iterator;
 	
 	MoveHistory(int from ,int to , Figure figure):_from(from),_to(to),_figure(figure){
 	}
@@ -87,8 +93,8 @@ class MoveHistory{
 	MoveHistory(){
 	}
 	
-	void addPrey(int position , Figure prey){
-		pray_list.push_back(Prey(position,prey));
+	void addCaptured(int position , Figure prey){
+		captured_list.push_back(Captured(position,prey));
 	}
 	
 	int to()const{return _to;}
@@ -104,12 +110,12 @@ class MoveHistory{
 	void setFigure(Figure& figure){_figure = figure; }
 	
 	
-	prey_iterator preyBegin()const{
-		return pray_list.begin();
+	captured_iterator beginCaptured()const{
+		return captured_list.begin();
 	}
 	
-	prey_iterator preyEnd()const{
-		return pray_list.end();
+	captured_iterator endCaptured()const{
+		return captured_list.end();
 	}
 	
 
@@ -117,6 +123,6 @@ class MoveHistory{
 	int _to;
 	int _from;
 	Figure _figure;
-	list<Prey> pray_list;
+	list<Captured> captured_list;
 };
 #endif

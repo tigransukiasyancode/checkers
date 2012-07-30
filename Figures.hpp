@@ -1,5 +1,7 @@
 #ifndef FIGURES_HPP
 #define FIGURES_HPP
+#include <iostream>
+using namespace std;
 #include "Players.hpp"
 typedef int Figure;
 class Figures{
@@ -14,6 +16,12 @@ class Figures{
 	}
 	static bool isChecker(Figure figure){
 		if(figure == FirstChecker || figure == SecondChecker){
+			return true;
+		}
+		return false;
+	}
+	static bool isKing(Figure f){
+		if(f ==FirstKing || f == SecondKing){
 			return true;
 		}
 		return false;
@@ -37,6 +45,7 @@ class Figures{
 		return Figures(SecondChecker , SecondKing);
 	}
 	static bool isOponents(Figure f1 , Figure f2){
+		//cout<<"figures"<<f1<<"=="<<f2<<endl;
 		return (f1*f2 < 0);
 		
 	}	

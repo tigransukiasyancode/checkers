@@ -1,12 +1,12 @@
 #ifndef BOARD_POSITIONS_HPP
 #define BOARD_POSITIONS_HPP
-#include "Player.hpp"
+#include "Players.hpp"
 class BoardPositions{
 	public:
-	typedef int SEQ[13][8];
-	typedef int MOV[2];
-	typedef int CH_SEQ[4][2];
-	typedef int SEQ_LEN[13];
+	typedef const int SEQ[13][8];
+	typedef const int MOV[2];
+	typedef const int CH_SEQ[4][2];
+	typedef const int SEQ_LEN[13];
 	typedef MOV* P_MOV;
 	typedef MOV& R_MOV;
 	typedef SEQ* P_SEQ;
@@ -21,7 +21,7 @@ class BoardPositions{
 	static bool isInKingSequence(int  , Player );
 	private:
 	static int getIndex(Player player){
-		if(player == Computer){
+		if(player == SecondPlayer){
 			return 0;
 		}
 		return 1;
