@@ -6,7 +6,7 @@ TEMPLATE = app
 TARGET = 
 DEPENDPATH += .
 INCLUDEPATH += .
-QMAKE_CXXFLAGS += -g
+QMAKE_CXXFLAGS += -g -std=c++0x
 # Input
 HEADERS += Board.hpp \
            BoardPositions.hpp \
