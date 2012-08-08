@@ -51,7 +51,7 @@ void  PossibleMoves::getAllForIndex( Board* board, int index , list<Move>* moves
 }
 void  PossibleMoves::getAll( Board* board, Player player , list<Move>* moves){
 	//Board& bor = *board;
-	Figures figures  = Figures::of(player);
+	Figures figures  = Figures::getFiguresOfPlayer(player);
 	//list<Move> simple_moves;
 	//list<JumpMove> jumps;
 	int i = moves->size();

@@ -2,13 +2,13 @@
 #include "PossibleMoves.hpp"
 #include <iostream>
 BoardValue Computer::min_max(Board* board , BoardValue alpha , BoardValue betta , Player player , Depth depth){
-	if(depth == min<Depth>()){
-		return Evaluator::evaluate(board ,max_player);
+	if(depth == 0){
+		return neural_network->evaluate(board ,max_player);
 	}
 	list<Move> moves ;
 	PossibleMoves::getAll(board , player , &moves);
 	Move result;
-	if(moves.enpty()){
+	if(moves.empty()){
 		if(player == max_player){
 			return -100000;
 		}
@@ -49,8 +49,8 @@ Move Computer::getMove(Board board){
 	for(list<Move>::iterator it = moves.begin() ; it != moves.end() ; ++it ){
 		board.perform(*it);
 		BoardValue val =  min_max(&board , alpha , betta , Players::oposite(max_player) , max_depth - 1);
-		cout<<"val="<<val<<endl;	
-		cout<<"alpha="<<int(alpha)<<endl;	
+		//cout<<"val="<<val<<endl;	
+		//cout<<"alpha="<<int(alpha)<<endl;	
 		if(val > alpha){
 			//cout<<"aaaaa"<<endl;
 			alpha = val;
@@ -58,6 +58,6 @@ Move Computer::getMove(Board board){
 		}
 		board.back();
 	}
-	cout<<result.to()<<endl;
+	//cout<<result.to()<<endl;
 	return result;
 }

@@ -7,6 +7,9 @@ class BoardPositions{
 	typedef const int MOV[2];
 	typedef const int CH_SEQ[4][2];
 	typedef const int SEQ_LEN[13];
+	typedef const int BOARD[8][8];
+	typedef BOARD* P_BOARD;
+	typedef BOARD& R_BOARD;
 	typedef MOV* P_MOV;
 	typedef MOV& R_MOV;
 	typedef SEQ* P_SEQ;
@@ -19,6 +22,7 @@ class BoardPositions{
 	static void getDiagonalSequences(int  , P_SEQ& , P_SEQ_LEN&  ,int (*) [2] , int*  );
 	static void getJumpSequencesForChecker(int  , P_CH_SEQ&  , int* );
 	static bool isInKingSequence(int  , Player );
+	static R_BOARD getBoard();
 	private:
 	static int getIndex(Player player){
 		if(player == SecondPlayer){

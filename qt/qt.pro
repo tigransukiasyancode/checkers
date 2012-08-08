@@ -20,7 +20,9 @@ HEADERS += Board.hpp \
            QtBoard.hpp \
            StaticEvaluator.hpp \
            types.hpp \
-           ../Figures.hpp
+	   ai/NeuralNetwork.hpp \
+	  ai/Neuron.hpp\
+	ai/BoardSquareIterator.hpp 
 SOURCES += Board.cpp \
            BoardPositions.cpp \
            CheckersGameWidget.cpp \
@@ -29,4 +31,5 @@ SOURCES += Board.cpp \
            Move.cpp \
            PossibleMoves.cpp \
            StaticEvaluator.cpp \
-           types.cpp
+           types.cpp\
+	ai/NeuralNetwork.cpp        

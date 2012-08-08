@@ -25,8 +25,8 @@ class CheckersGameWidget:public QWidget{
 			s[it->to] = QtBoard::MID;
 		}
 		s[m.from()] = QtBoard::FROM;
-		Figures white_fig = Figures::of(white_player);
-		Figures black_fig = Figures::of(Players::oposite(white_player));
+		Figures white_fig = Figures::getFiguresOfPlayer(white_player);
+		Figures black_fig = Figures::getFiguresOfPlayer(Players::oposite(white_player));
 		for(int i = 0 ; i < 32 ; ++i){
 			Figure figure = board[i];
 			if(figure == white_fig.checker){
@@ -44,8 +44,8 @@ class CheckersGameWidget:public QWidget{
 	std::vector<QtBoard::State> getStateVector(){
 		
 		std::vector<QtBoard::State> s( 32 , QtBoard::NONE);
-		Figures white_fig = Figures::of(white_player);
-		Figures black_fig = Figures::of(Players::oposite(white_player));
+		Figures white_fig = Figures::getFiguresOfPlayer(white_player);
+		Figures black_fig = Figures::getFiguresOfPlayer(Players::oposite(white_player));
 		for(int i = 0 ; i < 32 ; ++i){
 			Figure figure = board[i];
 			if(figure == white_fig.checker){

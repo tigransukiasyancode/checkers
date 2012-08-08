@@ -1,7 +1,7 @@
 #include "StaticEvaluator.hpp"
 #include <cstdlib>
 BoardValue StaticEvaluator::evaluate(Board* board , Player max_player){
-	Figures f = Figures::of(max_player);
+	Figures f = Figures::getFiguresOfPlayer(max_player);
 	int max_figures = 0;
 	int min_figures = 0;
 	int max_kings = 0;

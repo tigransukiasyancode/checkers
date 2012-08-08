@@ -38,7 +38,7 @@ class Figures{
 		}
 		return FirstPlayer;
 	}
-	static Figures of(Player player){
+	static Figures getFiguresOfPlayer(Player player){
 		if(player == FirstPlayer){
 			return Figures(FirstChecker , FirstKing);
 		}
